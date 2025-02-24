@@ -12,16 +12,43 @@ function getComputerChoice() {
         return 'scissor';
     }
 }
-console.log('Computer choice is: ' + getComputerChoice());
+// console.log('Computer choice is: ' + getComputerChoice());
 
 // 3. Write the logic to get the human choice
 function getHumanChoice() {
-    const humanChoice = prompt('Enter your choice: rock, paper or scissor').toLowerCase();
-    return humanChoice;
+    const humanInput = prompt('Enter your choice: rock, paper or scissor').toLowerCase();
+    return humanInput;
 }
-console.log('Your choice is: '+ getHumanChoice());
+// console.log('Your choice is: '+ getHumanChoice());
 
 // 4. Declare the players score variables
 
 let humanScore = 0;
 let compScore = 0;
+
+// 5. Write the logic to play a single round
+function playRound(humanChoice, compChoice) {
+    if ( humanChoice === compChoice ) {
+        return 'Its a Tie round';
+    } else if (
+        ( humanChoice === 'rock' && compChoice === 'paper') ||
+        ( humanChoice === 'paper' && compChoice === 'scissor') ||
+        ( humanChoice === 'scissor' && compChoice === 'rock')
+    ) {
+        compScore++
+        return 'You lose this round'
+    } else {
+        humanScore++
+        return 'You win this round'
+    }
+}
+const humanSelection = getHumanChoice();
+const compSelection = getComputerChoice();
+
+console.log('Result: '+ playRound(humanSelection, compSelection));
+console.log('Your choice is: ' + humanSelection);
+console.log('Computer choice is: ' + compSelection);
+console.log('Your score: ' + humanScore);
+console.log('Computer score: ' + compScore);
+
+// 6. Write the logic to play the entire game

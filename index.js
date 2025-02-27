@@ -28,6 +28,7 @@ const buttons = document.querySelectorAll(".buttons button");
 const resultText = document.getElementById("resultText");
 const resultHuman = document.getElementById("resultHuman");
 const resultComp = document.getElementById("resultComp");
+const winner = document.getElementById("winner");
 
 // 2. Write the logic to get the computer choice
 function getComputerChoice() {
@@ -46,18 +47,26 @@ let humanScore = 0;
 let compScore = 0;
   
     function playRound(humanChoice, compChoice) {
-        if ( humanChoice === compChoice ) {
-            return 'Its a Tie round';
-        } else if (
-            ( humanChoice === 'rock' && compChoice === 'paper') ||
-            ( humanChoice === 'paper' && compChoice === 'scissor') ||
-            ( humanChoice === 'scissor' && compChoice === 'rock')
-        ) {
-            compScore++
-            return 'You lose this round'
+
+        if ( humanChoice === 5 ) {
+            winner.textContent = 'YOU ARE THE WINNER';
+        } else if ( compScore === 5 ) {
+            winner.textContent = 'COMPUTER IS THE WINNER';
         } else {
-            humanScore++
-            return 'You win this round'
+
+            if ( humanChoice === compChoice ) {
+                return 'Its a Tie round';
+            } else if (
+                ( humanChoice === 'rock' && compChoice === 'paper') ||
+                ( humanChoice === 'paper' && compChoice === 'scissor') ||
+                ( humanChoice === 'scissor' && compChoice === 'rock')
+            ) {
+                compScore++
+                return 'You lose this round'
+            } else {
+                humanScore++
+                return 'You win this round'
+            };
         };
     };
 
